@@ -1,0 +1,110 @@
+---
+title: "Earth Analytics Week 1 Peter Jordan"
+author: "Peter Jordan"
+date: "15/09/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r perform-math }
+# perform addition
+a <- 1+2
+
+b <- 234
+
+# subtract a from b
+final_answer <- b - a
+
+# write out the final answer variable
+final_answer
+
+```
+```{r math-part-two }
+
+   # More math!
+   a * b
+
+   a * b / final_answer
+   
+```  
+```{r testing-arguments, eval = FALSE }
+
+   # Show the code, but not the output.
+   a * b
+
+   a * b / final_answer
+
+```
+ 
+```{r testing-arguments1, echo=FALSE }
+
+    # Hide the code, but show the output. Useful for creating a report with plots where you have a lot of code generating those plots.
+     a * b
+    a * b
+
+    a * b / final_answer
+```
+
+```{r testing-arguments2, results="hide" }
+
+     # The code will be evaluated but the results or the code will not be rendered on the output document.
+
+     a * b / final_answer
+
+```
+
+```{r}
+# load the ggplot2 library for plotting
+library(ggplot2)
+
+# download data from figshare
+# note that we are downloading  the data into your working directory (earth-analytics)
+download.file(url = "https://ndownloader.figshare.com/files/7010681",
+              destfile = "data/boulder-precip.csv")
+
+# import data
+boulder_precip <- read.csv(file="data/boulder-precip.csv")
+
+# view first few rows of the data
+head(boulder_precip)
+
+# when we download the data we create a dataframe
+# view each column of the data frame using it's name (or header)
+boulder_precip$DATE
+
+# view the precip column
+boulder_precip$PRECIP
+
+# q plot stands for quick plot. Let's use it to plot our data
+qplot(x=boulder_precip$DATE,
+      y=boulder_precip$PRECIP)
+
+```
+```{r}
+getwd()
+```
+
+![Me presenting at GDS](images/IMG_2503copy.jpg)
